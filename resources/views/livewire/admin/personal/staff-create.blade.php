@@ -1,7 +1,7 @@
 <form method="POST" wire:submit.prevent='storeStaff'>
 
     <div>
-        <x-input-label for="foto" :value="__('Foto')" />
+        <x-input-label for="photo" :value="__('Foto')" />
         
         <!-- Contenedor para el input -->
         <div class="flex items-center space-x-4 mb-4">
@@ -12,7 +12,7 @@
         </div>
     
         <!-- Mensaje de error -->
-        <x-input-error :messages="$errors->get('foto')" class="mt-2 text-sm text-red-600" />
+        <x-input-error :messages="$errors->get('photo')" class="mt-2 text-sm text-red-600" />
     </div>
     <!-- Nombre -->
     <div>
@@ -48,14 +48,15 @@
 
     <!-- Email Address -->
     <div class="mt-4">
-        <x-input-label for="rol" :value="__('Tipo de Cuenta')" />
-        <select wire:model="rol" id="rol"
+        <x-input-label for="user_type_id" :value="__('Tipo de Cuenta')" />
+        <select wire:model="user_type_id" id="user_type_id"
             class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full">
-            <option value="">-- Selecciona una opción --</option>
-            <option value="0">Administrador</option>
-            <option value="1">Personal - técnico</option>
+            @foreach ($type_users  as $type_user)
+                <option value="{{ $type_user->id }}">{{ $type_user->description }}</option>
+            @endforeach
+            
         </select>
-        <x-input-error :messages="$errors->get('rol')" class="mt-2" />
+        <x-input-error :messages="$errors->get('user_type_id')" class="mt-2" />
     </div>
 
     <!-- Celular -->

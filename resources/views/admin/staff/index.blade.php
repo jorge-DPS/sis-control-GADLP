@@ -14,7 +14,7 @@
                 
                 <!-- Botón para añadir personal -->
                 <div class="flex justify-end mb-4">
-                    <a href="{{ route('staff.create') }}" class="px-6 py-2 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition ease-in-out duration-200" id="addStaffBtn">
+                    <a href="{{ route('personal.create') }}" class="px-6 py-2 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition ease-in-out duration-200" id="addStaffBtn">
                         Añadir Personal
                     </a>
                 </div>

@@ -5,11 +5,12 @@ namespace App\Livewire\Admin\Personal;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Intervention\Image\ImageManager;
-use Intervention\Image\Drivers\Imagick\Driver;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class StaffCreate extends Component
 {
     use WithFileUploads;
+
     public $name;
     public $last_name;
     public $identity_card;
@@ -38,12 +39,41 @@ class StaffCreate extends Component
         // Generar un nombre único para la imagen
         $uniqueName = uniqid(); // Puedes usar Str::random() o cualquier otro método si prefieres
 
-        // create new manager instance with desired driver
-        $manager = new ImageManager(new Driver());
+        $manager = new ImageManager(
+            new Driver()
+        );
 
-        // read image from filesystem
-        $image = $manager->read('images/example.jpg');
-        // read image from file system
+        $storagePath = "user/images";
+
+         // Asegurarse de que el directorio principal existe
+         ensureDirectoryExists(storage_path("app/public/{$storagePath}"));
+
+         foreach ($this->images as $image) {
+             // Guardar la imagen original en el almacenamiento
+             $imagen = $image->store('activity/galery', 'public');
+             $filename = pathinfo($imagen, PATHINFO_FILENAME);
+
+             // Procesar la imagen original
+             $img = $manager->read($image->getRealPath());
+             $img->scale(1500, 1500);
+
+             // Guardar las versiones de la imagen utilizando el helper
+             saveImageVersion($img, 'jpeg', $storagePath, $filename, 80);
+             saveImageVersion($img, 'webp', $storagePath, $filename, 80);
+             saveImageVersion($img, 'png', $storagePath, $filename);
+
+             // Guardar el thumbnail
+             $thumbStoragePath = "{$storagePath}/thumbs";
+             ensureDirectoryExists(storage_path("app/public/{$thumbStoragePath}")); // Asegura el directorio de thumbnails
+             saveImageVersion($img->scale(width: 300), 'webp', $thumbStoragePath, $filename, 80);
+
+             // Crear el registro en la base de datos
+             ActivityImage::create([
+                 'image_url' => $filename,
+                 'thumbnail_url' => $filename,
+                 'activity_id' => $this->activity->id,
+             ]);
+         }
         dd($datos);
         // read image from filesystem
         $image = $manager->read('images/example.jpg');

@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\Personal;
 use App\Models\Admin\UserType;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Intervention\Image\ImageManager;
@@ -24,21 +25,25 @@ class StaffCreate extends Component
     public $password;
     public $password_confirmation;
 
-    protected $rules = [
-        'name' => 'required|string',
-        'last_name' => 'required|string',
-        'identity_card' => 'required|numeric',
-        'photo' => 'nullable|image|max:1024',
-        'email' => 'required|email',
-        'user_type_id' => 'required|numeric',
-        'phone' => 'numeric',
-        'password' => 'required|min:8|confirmed', // 'confirmed' se encarga de validar que coincidan
-        'password_confirmation' => 'required|min:8',
-    ];
-
+    public function rules()
+    {
+        return [
+            'name' => 'required|string',
+            'last_name' => 'required|string',
+            'identity_card' => ['required', 'numeric', 'lowercase', 'unique:users'],
+            'photo' => 'nullable|image|max:1024',
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users'],
+            'user_type_id' => 'required|numeric',
+            'phone' => 'numeric',
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password_confirmation' => 'required|min:8',
+        ];
+    }
+    
     public function storeStaff()
     {
         $datos = $this->validate();
+        dd($datos);
 
         $manager = new ImageManager(
             new Driver()
@@ -68,9 +73,14 @@ class StaffCreate extends Component
 
             // Crear el registro en la base de datos
             User::create($datos);
+
+            $this->reset(); // Esto reseteará todas las propiedades a sus valores iniciales
+            // Redirigir al índice después de guardar el nuevo personal
+            return redirect()->route('personal.index'); // Reemplaza 'personal.index' con la ruta de tu índice
+
         }
     }
-    
+
     public function render()
     {
         $typeUsers = UserType::all();

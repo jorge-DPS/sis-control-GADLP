@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\assignment\AssignmentController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\AsignacionController;
 use App\Http\Controllers\ProfileController;
@@ -20,9 +21,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [AsignacionController::class, 'index'])->middleware(['auth', 'verified'])->name('asignaciones.index');
-Route::get('/asignaciones/create', [AsignacionController::class, 'create'])->middleware(['auth', 'verified'])->name('asignaciones.create');
+Route::get('/dashboard', [AssignmentController::class, 'index'])->middleware(['auth', 'verified'])->name('asignaciones.index');
+Route::get('/asignaciones/create', [AssignmentController::class, 'create'])->middleware(['auth', 'verified'])->name('asignaciones.create');
 Route::middleware(['auth', 'verified'])->group(function () {
+    // Route::resource('asignaciones', AssignmentController::class);
     Route::resource('personal', StaffController::class);
 });
 

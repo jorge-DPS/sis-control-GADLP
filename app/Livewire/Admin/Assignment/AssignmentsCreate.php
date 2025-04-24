@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Admin\Assignment;
 
 use Livewire\Component;
 
-class CreateAsignacion extends Component
+class AssignmentsCreate extends Component
 {
     public function render()
     {

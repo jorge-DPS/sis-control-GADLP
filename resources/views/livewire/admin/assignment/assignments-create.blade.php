@@ -18,7 +18,7 @@
     </div>
 
     <!-- Imagen cargada -->
-    <div>
+    {{-- <div>
         @if ($photo)
             <div class="mb-4 text-center">
                 <p class="text-lg font-semibold text-gray-800">Imagen cargada:</p>
@@ -29,7 +29,7 @@
         @else
             <p class="text-sm text-gray-500 text-center">No se ha cargado ninguna imagen.</p>
         @endif
-    </div>
+    </div> --}}
 
     <!-- Nombre -->
     <div class="mb-4">
@@ -68,9 +68,9 @@
         <x-input-label for="user_type_id" :value="__('Tipo de Cuenta')" />
         <select wire:model="user_type_id" id="user_type_id"
             class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full">
-            @foreach ($type_users  as $type_user)
+            {{-- @foreach ($type_users  as $type_user)
                 <option value="{{ $type_user->id }}">{{ $type_user->description }}</option>
-            @endforeach
+            @endforeach --}}
         </select>
         <x-input-error :messages="$errors->get('user_type_id')" class="mt-2" />
     </div>

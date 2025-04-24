@@ -31,8 +31,6 @@ class StaffController extends Controller
     public function store(Request $request)
     {
         //
-        $datos = $request;
-        dd($datos);
     }
 
     /**

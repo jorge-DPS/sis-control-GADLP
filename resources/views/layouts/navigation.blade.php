@@ -15,9 +15,6 @@
                     <x-nav-link :href="route('asignaciones.index')" :active="request()->routeIs('asignaciones.index')">
                         {{ __('Asignaciones') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('asignaciones.create')" :active="request()->routeIs('asignaciones.create')">
-                        {{ __('Añadir asignación') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('personal.index')" :active="request()->routeIs('personal.index')">
                         {{ __('Personal - tecnicos') }}
                     </x-nav-link>

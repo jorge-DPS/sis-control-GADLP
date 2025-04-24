@@ -43,7 +43,6 @@ class StaffCreate extends Component
     public function storeStaff()
     {
         $datos = $this->validate();
-        dd($datos);
 
         $manager = new ImageManager(
             new Driver()

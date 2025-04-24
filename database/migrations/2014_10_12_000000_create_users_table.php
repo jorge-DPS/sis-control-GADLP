@@ -32,6 +32,7 @@ return new class extends Migration
             // Estado
             $table->boolean('status')->default(true); // true = activo, false = inactivo
 
+            $table->softDeletes(); // Esto agrega el campo deleted_at nullable
             $table->rememberToken();
             $table->timestamps();
         });

@@ -39,7 +39,7 @@ class StaffCreate extends Component
             'password_confirmation' => 'required|min:8',
         ];
     }
-    
+
     public function storeStaff()
     {
         $datos = $this->validate();
@@ -68,16 +68,31 @@ class StaffCreate extends Component
             saveImageVersion($img, 'png', $storagePath, $filename);
 
             $datos['photo'] = $filename;
-
-
-            // Crear el registro en la base de datos
-            User::create($datos);
-
-            $this->reset(); // Esto reseteará todas las propiedades a sus valores iniciales
-            // Redirigir al índice después de guardar el nuevo personal
-            return redirect()->route('personal.index'); // Reemplaza 'personal.index' con la ruta de tu índice
-
         }
+
+
+        // Obtener las iniciales de los nombres y apellidos
+        $nameParts = explode(' ', $this->name); // Divide el nombre completo en partes
+        $lastNameParts = explode(' ', $this->last_name); // Divide el apellido completo en partes
+
+        // Iniciales del nombre y apellido
+        $firstNameInitial = strtoupper(substr($nameParts[0], 0, 1)); // Primera letra del primer nombre
+        $secondNameInitial = isset($nameParts[1]) ? strtoupper(substr($nameParts[1], 0, 1)) : ''; // Segunda letra del segundo nombre, si existe
+        $firstLastNameInitial = strtoupper(substr($lastNameParts[0], 0, 1)); // Primera letra del primer apellido
+        $secondLastNameInitial = isset($lastNameParts[1]) ? strtoupper(substr($lastNameParts[1], 0, 1)) : ''; // Segunda letra del segundo apellido, si existe
+
+        // Concatenar todas las iniciales (ejemplo: "JCPG" para "Juan Carlos Pérez Gómez")
+        $initials = $firstNameInitial . $secondNameInitial . $firstLastNameInitial . $secondLastNameInitial;
+
+        // añadir las iniciales para los datos
+        $datos['cod_user'] = $initials;
+
+        // Crear el registro en la base de datos
+        User::create($datos);
+
+        $this->reset(); // Esto reseteará todas las propiedades a sus valores iniciales
+        // Redirigir al índice después de guardar el nuevo personal
+        return redirect()->route('personal.index'); // Reemplaza 'personal.index' con la ruta de tu índice
     }
 
     public function render()

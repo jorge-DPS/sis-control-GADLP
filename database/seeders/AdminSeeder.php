@@ -27,6 +27,7 @@ class AdminSeeder extends Seeder
                 'password' => Hash::make('admin123456'),
                 'status' => true,
                 'photo' => null,
+                'cod_user' => 'AP',
                 'email_verified_at' => now(),
                 'created_at' => now(),
                 'updated_at' => now(),

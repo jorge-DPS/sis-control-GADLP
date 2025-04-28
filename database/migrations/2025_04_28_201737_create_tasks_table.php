@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('branches', function (Blueprint $table) {
+        Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion');
-            $table->enum('state', ['activo', 'inactivo'])->default('activo');
-            $table->string('sigla');
-            $table->softDeletes(); // Esto agrega el campo deleted_at nullable
+            $table->foreignId('id_technical_assignment')->constrained('technical_assignments');
+            $table->string('descripcion', 255);
+            $table->enum('state', ['pendiente', 'completada'])->default('pendiente');
+            $table->text('observaciones')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('branches');
+        Schema::dropIfExists('tasks');
     }
 };

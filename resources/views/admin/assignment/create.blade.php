@@ -15,7 +15,7 @@
                     <!-- Formulario centrado y con espaciado -->
                     <div class="md:flex md:justify-center p-5 space-y-6 md:space-y-0 md:flex-col  mx-auto">
                         <!-- Formulario Livewire -->
-                        <livewire:admin.create-asignacion />
+                        <livewire:admin.assignment.assignments-create />
                     </div>
                 </div>
             </div>

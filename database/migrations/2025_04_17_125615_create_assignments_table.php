@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('assignments', function (Blueprint $table) {
             $table->id();
             // $table->foreignId('usuario_log_id')->constrained('usuarios')->onDelete('cascade');
-            $table->string('code');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->string('cod_assignment');
+            $table->string('id_user_logged');
+            $table->foreignId('admin_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('branch_id')->constrained('branches')->onDelete('cascade');
-            $table->boolean('state')->default(false);
+            $table->enum('state', ['pendiente', 'asignada', 'en_proceso', 'finalizada'])->default('pendiente');
+            $table->text('description_problem');
             $table->softDeletes(); // Esto agrega el campo deleted_at nullable
             $table->timestamps();
         });

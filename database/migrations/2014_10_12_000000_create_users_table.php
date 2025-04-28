@@ -28,9 +28,10 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('identity_card')->unique();
             $table->string('photo')->nullable(); // Nombre de archivo o URL
+            $table->string('cod_user');
 
             // Estado
-            $table->boolean('status')->default(true); // true = activo, false = inactivo
+            $table->enum('state', ['activo', 'inactivo'])->default('activo');
 
             $table->softDeletes(); // Esto agrega el campo deleted_at nullable
             $table->rememberToken();

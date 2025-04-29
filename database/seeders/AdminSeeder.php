@@ -25,7 +25,7 @@ class AdminSeeder extends Seeder
                 'identity_card' => '123456789',
                 'phone' => '700000001',
                 'password' => Hash::make('admin123456'),
-                'status' => true,
+                // 'state' => ,
                 'photo' => null,
                 'cod_user' => 'AP',
                 'email_verified_at' => now(),

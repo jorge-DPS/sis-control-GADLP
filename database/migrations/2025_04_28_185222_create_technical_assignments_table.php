@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('technical_assignments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('assignments_id')->constrained('assignments');
-            $table->foreignId('technical_id')->constrained('users');
+            $table->foreignId('id_assignments')->constrained('assignments');
+            $table->foreignId('id_technical')->constrained('users');
             // $table->dateTime('fecha_inicio')->nullable();
             // $table->dateTime('fecha_fin')->nullable();
             $table->enum('state', ['asignado', 'en_proceso', 'finalizado'])->default('asignado');

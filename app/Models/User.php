@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Models\Admin\Assignment;
+use App\Models\Admin\TechnicalAssignment;
 use App\Models\Admin\UserType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -58,9 +59,16 @@ class User extends Authenticatable
         return $this->belongsTo(UserType::class, 'user_type_id'); // Relación N:1
     }
 
-    public function assignment()
+
+    // Relaciones
+    public function asignacionesAdministradas()
     {
-        return $this->hasOne(Assignment::class)->where('state', 0); // 0 = en proceso
+        return $this->hasMany(Assignment::class, 'id_admin');
+    }
+
+    public function asignacionesTecnico()
+    {
+        return $this->hasMany(TechnicalAssignment::class, 'id_technical');
     }
     
 }

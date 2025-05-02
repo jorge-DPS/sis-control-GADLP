@@ -1,0 +1,115 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+
+class BranchesSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run()
+    {
+        $unidades = [
+            ['descripcion' => 'Unidad de Tecnologias Informaticas', 'sigla' => 'UTI', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Unidad de Tesoreria y Credito Publico e Ingresos', 'sigla' => 'UTCPI', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Unidad de Contabilidad', 'sigla' => 'DC', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de Recursos Humanos', 'sigla' => 'DRH', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion General de Auditoria Iinterna', 'sigla' => 'DGAI', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Secretaria Deptal. de Planificacion del Desarrollo', 'sigla' => 'SDPD', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion General de Notaria de Gobierno', 'sigla' => 'DGNG', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Unidad de Ventanilla Unica de Tramites', 'sigla' => 'VUT', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Unidad de Manejo de Bienes', 'sigla' => 'UMB', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Unidad de Servicios Generales y Transportes', 'sigla' => 'ASG', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de Comunicación Social', 'sigla' => 'DCS', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de Seguridad Ciudadana', 'sigla' => 'DSC', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Area de Caja Central', 'sigla' => 'ACC', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Area de Kardex', 'sigla' => 'AK', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Area de Almacen Central', 'sigla' => 'AAC', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion Administrativa', 'sigla' => 'DA', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Dirección de Protocolo y Coordinación con Organizaciones Sociales', 'sigla' => 'DPCOS', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Secretaria General', 'sigla' => 'SG', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Servicio Departamental de Caminos', 'sigla' => 'SEDCAM', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Servicio Deptamental de Salud', 'sigla' => 'SEDES', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Servicio Departamental de Autonomias  de La Paz', 'sigla' => 'SEDALP', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Servicio Deptamental de Gestion Social', 'sigla' => 'SEDEGES', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Servicio Departamental Agropecuario', 'sigla' => 'SEDAG', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Programa de Atencion a Niñas y Niños', 'sigla' => 'PANN', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Servicio Departamental de Deportes', 'sigla' => 'SEDEDE', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Area de Archivo Central', 'sigla' => 'AAC', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Ministerios, Alcaldias y otros', 'sigla' => 'EXT', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Representacion de la Gobernacion El Alto', 'sigla' => 'RG-EA', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Secretaria Deptal. de Turismo y Cultura', 'sigla' => 'SDTC', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Instituto Nacional de Medicina Nuclear', 'sigla' => 'INAMEN', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Juez Sumariante', 'sigla' => 'JS', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de Alerta Temprana y Prevencion de Riesgos', 'sigla' => 'DATPR', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Ventanilla de Correspondencia', 'sigla' => 'VC', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Asesoria General', 'sigla' => 'AG', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'JUEZ SUMARIANTE', 'sigla' => 'JS', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Servicio Deptamental de Riego', 'sigla' => 'SEDERI', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Honorable Asamblea Legislativa Deptal. de La Paz', 'sigla' => 'HALDLP', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Secretaria Deptal. de Economia y Finanzas', 'sigla' => 'SDEF', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Secretaria Deptal. de Desarrollo Social y Comunitario', 'sigla' => 'SDDSC', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Secretaria Deptal. de Asuntos Juridicos', 'sigla' => 'SDAJ', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Secretaria Deptal. de Infraestructura Productiva y Obras Publicas', 'sigla' => 'SDIPOP', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Unidad de Desarrollo Organizacional', 'sigla' => 'UDO', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Unidad de Coordinacion con Organizaciones Sociales', 'sigla' => 'UCOS', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de Transparencia', 'sigla' => 'DT', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de Planificacion Estrategica Territorial', 'sigla' => 'DPET', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de Control de Gestion', 'sigla' => 'DCG', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de Informacion Departamental', 'sigla' => 'DID', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'DDireccion de Promocion Economica y Transformacion Industrial', 'sigla' => 'DPETI', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Secretaria Deptal. de Mineria y Metalurgia', 'sigla' => 'SDMM', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Ex- DMMH', 'sigla' => 'DMMH', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de Infraestructura Produccion y de Obras Publicas', 'sigla' => 'DIPOP', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion Infraestructura Energetica, Electrica y Energia Alternativa', 'sigla' => 'DIEEEA', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de Desarrollo Social', 'sigla' => 'DDS', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de Salud Ambiental y Cambio Climatico', 'sigla' => 'DSACC', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de Gestion de Cuencas y Suelos', 'sigla' => 'DGCS', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de Analisis Juridico', 'sigla' => 'DAJ', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de Gestion Juridica', 'sigla' => 'DGJ', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Jefatura de Gabinete -  Despacho', 'sigla' => 'JG', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion Financiera', 'sigla' => 'DF', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Unidad de Presupuesto', 'sigla' => 'UP', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Secretaria Deptal. de Desarrollo Economico y Transformacion Industrial', 'sigla' => 'SDDETI', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Empresa Deptal. de Aguas de La Paz', 'sigla' => 'EDA', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de Promocion Economica y Transformacion Industrial', 'sigla' => 'DPTI', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de Culturas', 'sigla' => 'DC', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Secretaria Deptal. de los Derechos de Madre Tierra', 'sigla' => 'SDDMT', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Area de Adquisiciones', 'sigla' => 'AA', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de CODEPEDIS', 'sigla' => 'DCO', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Unidad de Contrataciones', 'sigla' => 'UC', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Unidad de Relaciones Iinternacionales', 'sigla' => 'URI', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Instituto Comercial Superior', 'sigla' => 'INCOS', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion Departamental  de Transportes y Telecomunicaciones', 'sigla' => 'DDTT', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Coordinadores Provinciales', 'sigla' => 'CP', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Area de Archivo', 'sigla' => 'AAR', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de Limites y Organizacion Territorial', 'sigla' => 'DLOT', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de Turismo', 'sigla' => 'DTU', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de Desarrollo Normativo', 'sigla' => 'DDN', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de Personeria Juridica', 'sigla' => 'DPJ', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de Recursos Naturales', 'sigla' => 'DRN', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de Gestion de Establecimientos de Salud', 'sigla' => 'DGES', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Servicio Departamental de Construccion de Obras Civiles', 'sigla' => 'SEDCOC', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Industrialización, Producción y Comercialización de Mate de Coca, Infusiones combinadas y productos derivados', 'sigla' => 'INALMAMA', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Dirección Legal Administrativa', 'sigla' => 'DLA', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de PoliticaSocial', 'sigla' => 'DPS', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Instituto Departamental de Estadistica', 'sigla' => 'IDE', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Unidad de Administracion Tributaria Departamental', 'sigla' => 'UATD', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Area de Control de Peajes y Rodaje', 'sigla' => 'UCPR', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Area de Impuestos Departamentales', 'sigla' => 'AID', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Terminal de Transporte Interprovincial de la Ciudad de El Alto', 'sigla' => 'TTICEA', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de elaboracion de estudios de proyectos de preinversion', 'sigla' => 'DIEEPI', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Direccion de Gestion de Residuos Solidos', 'sigla' => 'DGRS', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Unidad de Administracion de Personal', 'sigla' => 'UAP', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Area de Activos Fijos', 'sigla' => 'AAF', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['descripcion' => 'Responsable del Proceso de Contratación de Licitación Pública', 'sigla' => 'RPC', 'state' => 'activo', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+        ];
+
+        DB::table('branches')->insert($unidades);
+    }
+}

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('branches', function (Blueprint $table) {
             $table->id();
             $table->string('descripcion');
-            $table->enum('state', ['activo', 'inactivo'])->default('activo');
             $table->string('sigla');
+            $table->enum('state', ['activo', 'inactivo'])->default('activo');
             $table->softDeletes(); // Esto agrega el campo deleted_at nullable
             $table->timestamps();
         });

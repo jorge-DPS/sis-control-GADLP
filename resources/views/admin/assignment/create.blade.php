@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Añadir una asignación') }}
+            {{ __('Nueva Asignacion') }}
         </h2>
     </x-slot>
 
@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <!-- Título del formulario -->
-                    <h1 class="text-3xl font-bold text-center mb-6 text-indigo-600">Publicar asignación</h1>
+                    <h1 class="text-3xl font-bold text-center mb-6 text-indigo-600">Nueva Asignacion</h1>
                     
                     <!-- Formulario centrado y con espaciado -->
                     <div class="md:flex md:justify-center p-5 space-y-6 md:space-y-0 md:flex-col  mx-auto">

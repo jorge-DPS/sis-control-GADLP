@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    {{-- <div class="py-12">
         @forelse($assignments as $asignacionTecnica)
     @php
         $asignacion = $asignacionTecnica->assignment;
@@ -25,5 +25,10 @@
         No tienes asignaciones activas por el momento.
     </div>
 @endforelse
+    </div> --}}
+
+    <div class="py-12">
+        <livewire:technician.technician-index />
     </div>
+
 </x-technician>

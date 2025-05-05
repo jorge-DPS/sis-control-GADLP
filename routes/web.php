@@ -42,6 +42,7 @@ Route::middleware('auth')->group(function () {
 // DASHBOARD TÉCNICO
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('technician/dashboard', [TaskController::class, 'index'])->name('task.index');
+    Route::get('technician/create', [TaskController::class, 'create'])->name('task.create');
 });
 
 require __DIR__.'/auth.php';

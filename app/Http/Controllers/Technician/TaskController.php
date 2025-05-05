@@ -10,25 +10,13 @@ use Illuminate\Http\Request;
 class TaskController extends Controller
 {
     //
-
-
-
     public function index()
     {
+        // dd($assignments);
+        return view('technician.index');
+    }
 
-        $userId = auth()->id(); // técnico logueado
-
-        $assignments = TechnicalAssignment::with([
-            'assignment.lugar',
-            'assignment.administrador',
-        ])
-        ->where('id_technical', $userId)
-        ->latest()
-        ->get();
-
-            // dd($assignments);
-        return view('technician.index', [
-            'assignments' => $assignments
-        ]);
+    public function create(){
+        return view('technician.create');
     }
 }

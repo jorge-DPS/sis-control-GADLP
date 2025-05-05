@@ -10,9 +10,7 @@ class AssignmentsIndex extends Component
     public function render()
     {
         $assignments = Assignment::with(['lugar', 'administrador', 'tecnicosAsignados'])->get();
-
-// dd($assignments);
-
+        // dd($assignments);
         return view('livewire.admin.assignment.assignments-index', [
             'assignments' => $assignments,
         ]);

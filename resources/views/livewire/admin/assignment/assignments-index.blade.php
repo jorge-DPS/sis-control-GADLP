@@ -16,46 +16,66 @@
 
             <!-- Tabla de asignaciones -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
-                <!-- Ejemplo de tarjeta -->
-                <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
-                    <h3 class="text-lg font-semibold text-gray-800">Juan Pérez</h3>
-                    <p class="text-sm text-gray-500">Especialidad: <span class="font-medium text-gray-700">Soporte de
-                            Equipos</span></p>
-                    <p class="text-sm text-gray-500">Estado: <span class="font-medium text-green-500">Activo</span></p>
 
-                    <div class="flex justify-center mt-4 space-x-4">
-                        <!-- Botones de acción -->
-                        <button class="text-blue-600 hover:text-blue-800 transition duration-200">Ver</button>
-                        <button class="text-red-600 hover:text-red-800 transition duration-200">Eliminar</button>
+                @foreach ($assignments as $assignment)
+                    <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+                        <!-- Lugar -->
+                        <h3 class="text-lg font-semibold text-gray-800">
+                            {{ $assignment->lugar->descripcion ?? 'Sin ubicación' }}
+                        </h3>
+
+                        <!-- Administrador -->
+                        <p class="text-sm text-gray-500">
+                            Asignado por:
+                            <span class="font-medium text-gray-700">
+                                {{ $assignment->administrador->name ?? 'Desconocido' }}
+                            </span>
+                        </p>
+
+                        <!-- Fecha -->
+                        <p class="text-sm text-gray-500">
+                            Fecha de asignación:
+                            <span class="font-medium text-gray-700">
+                                {{ $assignment->fecha_asignacion ? \Carbon\Carbon::parse($assignment->fecha_asignacion)->format('d/m/Y') : 'Pendiente' }}
+                            </span>
+                        </p>
+
+                        <!-- Estado -->
+                        <p class="text-sm text-gray-500">
+                            Estado:
+                            <span class="font-medium
+                                {{ $assignment->state === 'pendiente' ? 'text-yellow-500' : 'text-green-600' }}">
+                                {{ ucfirst($assignment->state) }}
+                            </span>
+                        </p>
+
+                        <!-- Descripción -->
+                        <p class="text-sm text-gray-500 mt-2">
+                            Problema: <br>
+                            <span class="font-medium text-gray-700">
+                                {{ $assignment->description_problem }}
+                            </span>
+                        </p>
+
+                        <!-- Técnicos asignados -->
+                        @php
+                            $totalTecnicos = $assignment->tecnicosAsignados->count();
+                        @endphp
+
+                        <p class="text-sm text-gray-500 mt-2">
+                            Técnicos asignados:
+                            <span class="font-medium text-gray-700">
+                                {{ $totalTecnicos > 0 ? $totalTecnicos : 'Ninguno' }}
+                            </span>
+                        </p>
+
+                        <!-- Botones -->
+                        <div class="flex justify-center mt-4 space-x-4">
+                            <button class="text-blue-600 hover:text-blue-800 transition duration-200">Ver</button>
+                            <button class="text-red-600 hover:text-red-800 transition duration-200">Eliminar</button>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Más tarjetas de personal -->
-                <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
-                    <h3 class="text-lg font-semibold text-gray-800">Ana Gómez</h3>
-                    <p class="text-sm text-gray-500">Especialidad: <span
-                            class="font-medium text-gray-700">Mantenimiento</span></p>
-                    <p class="text-sm text-gray-500">Estado: <span class="font-medium text-yellow-500">Pendiente</span>
-                    </p>
-
-                    <div class="flex justify-center mt-4 space-x-4">
-                        <button class="text-blue-600 hover:text-blue-800 transition duration-200">Ver</button>
-                        <button class="text-red-600 hover:text-red-800 transition duration-200">Eliminar</button>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
-                    <h3 class="text-lg font-semibold text-gray-800">Carlos Ruiz</h3>
-                    <p class="text-sm text-gray-500">Especialidad: <span class="font-medium text-gray-700">Desarrollo de
-                            Software</span></p>
-                    <p class="text-sm text-gray-500">Estado: <span class="font-medium text-gray-700">Activo</span></p>
-
-                    <div class="flex justify-center mt-4 space-x-4">
-                        <button class="text-blue-600 hover:text-blue-800 transition duration-200">Ver</button>
-                        <button class="text-red-600 hover:text-red-800 transition duration-200">Eliminar</button>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
 
 

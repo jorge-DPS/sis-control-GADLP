@@ -26,9 +26,18 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
-
         $request->session()->regenerate();
 
+        $user = Auth::user();
+
+        // Redirección por tipo de usuario
+        if ($user->user_type_id == 1) {
+            return redirect()->route('asignaciones.index');
+        } elseif ($user->user_type_id == 2) {
+            return redirect()->route('task.index');
+        }
+
+        // Default (por si se agrega otro tipo en el futuro)
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 

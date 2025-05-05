@@ -20,39 +20,38 @@
                     <!-- Ejemplo de tarjeta -->
 
                     @foreach ($users as $user)
-                        <div
-                            class="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-2xl transition duration-300 ease-in-out transform hover:scale-105">
-                            <h3 class="text-lg font-semibold text-gray-800 truncate">
-                                {{ $user->name . ' ' . $user->last_name }}</h3>
-                            <p class="text-sm text-gray-500 mt-2">Especialidad:
-                                <span class="font-medium text-indigo-600">{{ $user->userType->description }}</span>
-                            </p>
-                            <p class="text-sm text-gray-500 mt-1">Estado:
-                                <span
-                                    class="font-medium 
-                @if ($user->status == 1) text-green-500
-                
-                @else 
+                    <div
+                        class="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-2xl transition duration-300 ease-in-out transform hover:scale-105">
+                        <h3 class="text-lg font-semibold text-gray-800 truncate">
+                            {{ $user->name . ' ' . $user->last_name }}</h3>
+                        <p class="text-sm text-gray-500 mt-2">Especialidad:
+                            <span class="font-medium text-indigo-600">{{ $user->userType->description }}</span>
+                        </p>
+                        <p class="text-sm text-gray-500 mt-1">Estado:
+                            <span class="font-medium
+                @if ($user->state == 'activo') text-green-500
+
+                @else
                     text-yellow-500 @endif
             ">
-                                    @if ($user->status == 1)
-                                        Activo
-                                    @else
-                                        Ocupado
-                                    @endif
-                                </span>
-                            </p>
+                                @if ($user->state == 'activo')
+                                Activo
+                                @else
+                                Ocupado
+                                @endif
+                            </span>
+                        </p>
 
-                            <div class="flex justify-start mt-4 space-x-6">
-                                <!-- Botón Ver -->
-                                <button
-                                    class="text-blue-600 hover:text-blue-800 transition duration-200 py-2 px-4 rounded-md bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">Ver</button>
+                        <div class="flex justify-start mt-4 space-x-6">
+                            <!-- Botón Ver -->
+                            <button
+                                class="text-blue-600 hover:text-blue-800 transition duration-200 py-2 px-4 rounded-md bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">Ver</button>
 
-                                <!-- Botón Eliminar -->
-                                <button
-                                    class="text-red-600 hover:text-red-800 transition duration-200 py-2 px-4 rounded-md bg-red-100 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">Eliminar</button>
-                            </div>
+                            <!-- Botón Eliminar -->
+                            <button
+                                class="text-red-600 hover:text-red-800 transition duration-200 py-2 px-4 rounded-md bg-red-100 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">Eliminar</button>
                         </div>
+                    </div>
                     @endforeach
                     <!-- Más tarjetas de personal -->
                 </div>

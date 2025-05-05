@@ -8,13 +8,14 @@ use App\Models\Admin\Assignment;
 use App\Models\Admin\TechnicalAssignment;
 use App\Models\Admin\UserType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -30,7 +31,7 @@ class User extends Authenticatable
         'phone',
         'identity_card',
         'photo',
-        'status',
+        'state',
         'cod_user'
     ];
 
@@ -70,5 +71,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(TechnicalAssignment::class, 'id_technical');
     }
-    
+
 }

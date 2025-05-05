@@ -17,8 +17,8 @@ class Task extends Model
         'observaciones',
     ];
 
-    public function asignacionTecnico()
+    public function technicalAssignment()
     {
-        return $this->belongsTo(TechnicalAssignment::class, 'id_asignacion_tecnico');
+        return $this->belongsTo(TechnicalAssignment::class, 'id_technical_assignment');
     }
 }

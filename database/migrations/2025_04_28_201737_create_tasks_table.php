@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('descripcion', 255);
             $table->enum('state', ['pendiente', 'completada'])->default('pendiente');
             $table->text('observaciones')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -18,6 +18,7 @@ return new class extends Migration
             // $table->dateTime('fecha_inicio')->nullable();
             // $table->dateTime('fecha_fin')->nullable();
             $table->enum('state', ['asignado', 'en_proceso', 'finalizado'])->default('asignado');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

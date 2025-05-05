@@ -5,16 +5,16 @@ namespace App\Models\Admin;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Assignment extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'cod_assignment',
-        'id_user_logged',
-        'id_admin',
         'id_branch',
+        'id_admin',
+        'fecha_asignacion',
         'state',
         'description_problem',
 
@@ -32,7 +32,7 @@ class Assignment extends Model
 
     public function tecnicosAsignados()
     {
-        return $this->hasMany(TechnicalAssignment::class, 'id_asignacion');
+        return $this->hasMany(TechnicalAssignment::class, 'id_assignments');
     }
 
 }

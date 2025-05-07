@@ -36,7 +36,7 @@
                 <!-- Botones -->
                 <div class="mt-6 flex justify-center gap-4">
                     @if($asignacion->state !== 'finalizado')
-                        <a href="{{ route('task.create') }}" class="bg-green-600 hover:bg-green-700 text-white text-sm font-semibold px-6 py-2 rounded-lg shadow transition">
+                        <a href="{{ route('task.create', [$asignacionTecnica] ) }}" class="bg-green-600 hover:bg-green-700 text-white text-sm font-semibold px-6 py-2 rounded-lg shadow transition">
                             Añadir Tarea
                         </a>
                     @else

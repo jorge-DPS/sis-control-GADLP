@@ -16,7 +16,9 @@ class TaskController extends Controller
         return view('technician.index');
     }
 
-    public function create(){
-        return view('technician.create');
+    public function create(TechnicalAssignment $technicalAssignment){
+        return view('technician.create', [
+            'technicalAssignment' => $technicalAssignment,
+        ]);
     }
 }

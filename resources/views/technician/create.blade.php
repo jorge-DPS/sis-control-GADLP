@@ -5,8 +5,8 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <livewire:technician.technician-create />
+    <div class="py-4">
+        <livewire:technician.technician-create :technical-assignment="$technicalAssignment" />
     </div>
 
 </x-technician>

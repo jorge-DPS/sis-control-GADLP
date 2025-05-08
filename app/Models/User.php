@@ -7,6 +7,7 @@ namespace App\Models;
 use App\Models\Admin\Assignment;
 use App\Models\Admin\TechnicalAssignment;
 use App\Models\Admin\UserType;
+use App\Models\Technical\Task;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -72,4 +73,9 @@ class User extends Authenticatable
         return $this->hasMany(TechnicalAssignment::class, 'id_technical');
     }
 
+    public function tareas()
+    {
+        // Obtener tareas de todas las asignaciones del técnico
+        return $this->hasManyThrough(Task::class, TechnicalAssignment::class, 'id_technical', 'id_technical_assignment');
+    }
 }

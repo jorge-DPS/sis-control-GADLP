@@ -24,6 +24,7 @@ Route::get('/', function () {
 
 Route::get('admin/dashboard', [AssignmentController::class, 'index'])->middleware(['auth', 'verified'])->name('asignaciones.index');
 Route::get('admin/asignaciones/create', [AssignmentController::class, 'create'])->middleware(['auth', 'verified'])->name('asignaciones.create');
+Route::get('admin/asignaciones/{assignment}/edit', [AssignmentController::class, 'edit'])->middleware(['auth', 'verified'])->name('asignaciones.edit');
 Route::middleware(['auth', 'verified'])->group(function () {
     // Route::resource('asignaciones', AssignmentController::class);
     Route::resource('admin/personal', StaffController::class);

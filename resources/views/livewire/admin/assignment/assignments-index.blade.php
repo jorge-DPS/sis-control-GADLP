@@ -71,7 +71,7 @@
 
                         <!-- Botones -->
                         <div class="flex justify-center mt-4 space-x-4">
-                            <button class="text-blue-600 hover:text-blue-800 transition duration-200">Ver</button>
+                            <a class="text-blue-600 hover:text-blue-800 transition duration-200" href="{{ route('asignaciones.edit', [$assignment] ) }}">Editar</a>
                             <button class="text-red-600 hover:text-red-800 transition duration-200">Eliminar</button>
                         </div>
                     </div>

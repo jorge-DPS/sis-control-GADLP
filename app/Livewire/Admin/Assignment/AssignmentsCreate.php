@@ -48,25 +48,26 @@ class AssignmentsCreate extends Component
             if ($technician) {
                 $technician->update(['state' => 'inactivo']);
             }
-
         }
 
         // 3. Reset opcional
         $this->reset(['selected_technicians']);
         session()->flash('message', 'Asignación creada correctamente.');
         return redirect()->route('asignaciones.index');
-
     }
 
     public function render()
     {
-        $technicians = User::with('userType')  // Eager load de la relación 'typeUser'
+        $activeTechnicians = User::with('userType')  // Eager load de la relación 'userType'
             ->where('user_type_id', 2)  // Filtrar por el tipo de usuario
+            ->where('state', 'activo')  // Filtrar solo usuarios activos
             ->get();
+
+        // dd($activeTechnicians);
 
         $branches = Branch::all();
         return view('livewire.admin.assignment.assignments-create', [
-            'technicians' => $technicians,
+            'activeTechnicians' => $activeTechnicians,
             'branches' => $branches,
         ]);
     }
